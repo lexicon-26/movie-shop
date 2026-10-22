@@ -35,7 +35,7 @@ export function SignInForm() {
       onSubmit: formSchema,
     },
     onSubmit: async ({ value }) => {
-      const { error } = await authClient.signIn.email({
+      const { data, error } = await authClient.signIn.email({
         email: value.email,
         password: value.password,
       });
@@ -55,8 +55,14 @@ export function SignInForm() {
         type: "success",
       });
 
-      //   redirect the user
-      router.push("/");
+      const userRole = data?.user?.role;
+
+      if (userRole === "admin") {
+        router.push("/admin/dashboard");
+      } else {
+        router.push("/user/dashboard");
+      }
+
       router.refresh();
     },
   });

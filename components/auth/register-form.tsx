@@ -68,7 +68,7 @@ export function RegisterForm() {
       });
 
       //   redirect the user
-      router.push("/");
+      router.push("/user/dashboard");
       router.refresh();
     },
   });
