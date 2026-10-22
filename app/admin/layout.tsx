@@ -25,11 +25,9 @@ export default async function AdminLayout({
     <SidebarProvider>
       <div className="flex min-h-screen w-full bg-background text-foreground">
         <AdminSideBar />
+        <SidebarTrigger className="text-foreground hover:bg-accent hover:text-accent-foreground" />
         <SidebarInset className="flex-1 bg-background p-6">
-          <main className="space-y-4">
-            <SidebarTrigger className="text-foreground hover:bg-accent hover:text-accent-foreground" />
-            {children}
-          </main>
+          <main className="space-y-4">{children}</main>
         </SidebarInset>
       </div>
     </SidebarProvider>
